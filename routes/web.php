@@ -17,8 +17,8 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', 'WebController@index')->name('main');
 
-Route::post('/users', [UserController::class, 'store'])->name('insert_user');
-Route::put('/users/{id}', [UserController::class, 'update'])->name('update_user');
-Route::get('/users/{id}', [UserController::class, 'show'])->name('get_one');
-Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('delete_user');
-Route::get('/users', [UserController::class, 'index'])->name('get_all');
+Route::post('/users', 'UserController@store')->name('insert_user');
+Route::put('/users/{id}', 'UserController@update')->name('update_user');
+Route::get('/users/{id}', 'UserController@show')->name('get_one');
+Route::delete('/users/{id}', 'UserController@destroy')->name('delete_user');
+Route::get('/users', 'UserController@index')->name('get_all');
