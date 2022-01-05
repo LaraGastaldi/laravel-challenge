@@ -76,6 +76,8 @@
                 }
             });
         }
+
+
     </script>
 @stop
 
@@ -92,6 +94,16 @@
         @endif
         <div class="justify-content-between row ms-1">
             <button class="btn btn-sm btn-outline-secondary col-2" onclick="toggleAddUser()">Add user</button>
+            <form action="{{ route('main') }}" class="form-inline col-6 my-auto">
+                <label for="userSearch">
+                    <input
+                        id="userSearch"
+                        name="search"
+                        class="form-control-sm"
+                        placeholder="Search for an user"
+                    />
+                </label>
+            </form>
             <a href="{{ route('main') }}" class="col-1 my-auto"><i class="fas fa-sync-alt"></i></a>
         </div>
         <div class="visually-hidden mt-2" id="addUser">
@@ -133,12 +145,8 @@
                     @foreach($users as $user)
                         <tr id="user_info_{{ $user->id }}">
                             <td>{{ $user->id }}</td>
-                            <td>
-                                <div class="to_hide_{{ $user->id }}">{{ $user->email }}</div>
-                            </td>
-                            <td>
-                                <div class="to_hide_{{ $user->id }}">{{ str_repeat("*", strlen($user->password)) }}</div>
-                            </td>
+                            <td class="email_field">{{ $user->email }}</td>
+                            <td>{{ str_repeat("*", strlen($user->password)) }}</td>
                             <td>
                                 <a class="btn" onclick="showUserEdit({{ $user->id }})">
                                     <i class="fas fa-edit"></i>

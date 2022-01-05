@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Helpers\ControllerHelper;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -23,9 +26,17 @@ class UserController extends Controller
      */
     public function index()
     {
-        $allUsers = User::all();
+        $users = User::all();
+        if (request()->has("search")) {
+            $users = DB::table('users')
+                ->whereRaw('email LIKE "%'.request()->query("search").'%"')
+                ->get();
 
-        return new JsonResponse($allUsers);
+//            $users = User::all()
+//                ->where('email', 'LIKE', '%'.request()->query("search").'%');
+        }
+
+        return new JsonResponse($users);
     }
 
     /**
