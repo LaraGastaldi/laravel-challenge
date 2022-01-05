@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Symfony\Component\HttpFoundation\Request;
 use Illuminate\Routing\Controller;
 
 class WebController extends Controller

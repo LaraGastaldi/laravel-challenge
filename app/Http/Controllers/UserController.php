@@ -4,12 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Helpers\ControllerHelper;
 use App\Models\User;
-use http\Env\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Psy\Util\Json;
-use Symfony\Component\HttpFoundation\Response as ResponseCodes;
 
 class UserController extends Controller
 {
