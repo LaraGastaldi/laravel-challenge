@@ -7,7 +7,7 @@
 </head>
 <body>
 <!-- header -->
-<div class="d-flex p-2 bg-secondary justify-content-center">
+<div class="d-flex p-2 bg-primary justify-content-center">
     <div class="container-flex">
         <h1 class="display-3 text-light">@yield('title')</h1>
     </div>
