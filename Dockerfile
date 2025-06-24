@@ -30,4 +30,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 RUN composer install --no-interaction --optimize-autoloader
 
+RUN php artisan key:generate
+RUN php artisan migrate --force
+
 CMD ["php", "artisan", "serve", "--port=8080"]
