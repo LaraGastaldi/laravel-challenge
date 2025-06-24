@@ -10,6 +10,7 @@
 <div class="d-flex p-2 bg-warning justify-content-center">
     <div class="container-flex">
         <h1 class="display-3 text-light">@yield('title')</h1>
+        <p class="lead text-light">Isso é uma descrição</p>
     </div>
 </div>
 <!-- content -->
