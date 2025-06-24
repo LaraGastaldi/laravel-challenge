@@ -2,6 +2,11 @@ FROM php:8.1-cli
 
 COPY . /var/www
 
+# Set working directory
+WORKDIR /var/www
+
+RUN cp .env.example .env
+
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
@@ -22,9 +27,6 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd sockets curl
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Set working directory
-WORKDIR /var/www
 
 RUN composer install --no-interaction --optimize-autoloader
 
