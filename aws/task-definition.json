@@ -1,21 +1,43 @@
 {
-    "family": "test-deploy-task",
+    "family": "definition-test-deploy",
     "containerDefinitions": [
         {
-            "name": "laravel",
+            "name": "laravel-2",
             "image": "906146266574.dkr.ecr.us-east-1.amazonaws.com/test-deploy",
             "cpu": 512,
             "memory": 1024,
             "memoryReservation": 1024,
-            "portMappings": [],
+            "portMappings": [
+                {
+                    "name": "main",
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
             "essential": true,
             "environment": [],
             "environmentFiles": [],
             "mountPoints": [],
             "volumesFrom": [],
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/definition-test-deploy",
+                    "mode": "non-blocking",
+                    "awslogs-create-group": "true",
+                    "max-buffer-size": "25m",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
             "systemControls": []
         }
     ],
+    "taskRoleArn": "arn:aws:iam::906146266574:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::906146266574:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
     "volumes": [],
@@ -25,6 +47,9 @@
     ],
     "cpu": "512",
     "memory": "1024",
+    "ephemeralStorage": {
+        "sizeInGiB": 21
+    },
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
