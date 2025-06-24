@@ -34,4 +34,4 @@ RUN php artisan key:generate
 RUN touch database/database.sqlite
 RUN php artisan migrate --force
 
-CMD ["php", "artisan", "serve", "--port=8080"]
+CMD ["php", "artisan", "serve", "--port=8080", "--host=0.0.0.0"]
